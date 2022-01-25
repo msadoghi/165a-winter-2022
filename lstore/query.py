@@ -35,14 +35,15 @@ class Query:
 
     """
     # Read a record with specified key
-    # :param key: the key value to select records based on
+    # :param index_value: the value of index you want to search
+    # :param index_column: the column number of index you want to search based on
     # :param query_columns: what columns to return. array of 1 or 0 values.
     # Returns a list of Record objects upon success
     # Returns False if record locked by TPL
     # Assume that select will never be called on a key that doesn't exist
     """
 
-    def select(self, index_key, column, query_columns):
+    def select(self, index_value, index_column, query_columns):
         pass
     """
     # Update a record with specified key and columns
