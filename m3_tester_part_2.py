@@ -30,7 +30,8 @@ seed(3562901)
 for i in range(0, number_of_records):
     key = 92106429 + i
     keys.append(key)
-    records[key] = [key, randint(0, 20), randint(0, 20), randint(0, 20), randint(0, 20)]
+    records[key] = [key, randint(i * 20, (i + 1) * 20), randint(i * 20, (i + 1) * 20), randint(i * 20, (i + 1) * 20), randint(i * 20, (i + 1) * 20)]
+    print(records[key])
 
 transaction_workers = []
 transactions = []
@@ -43,11 +44,6 @@ for i in range(num_threads):
 
 
 
-for i in range(0, number_of_records):
-    key = 92106429 + i
-    keys.append(key)
-    records[key] = [key, randint(i * 20, (i + 1) * 20), randint(i * 20, (i + 1) * 20), randint(i * 20, (i + 1) * 20), randint(i * 20, (i + 1) * 20)]
-    q = Query(grades_table)
 
 
 # x update on every column
