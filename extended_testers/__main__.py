@@ -5,6 +5,7 @@ from random import choice, randrange
 
 # Student Id and 4 grades
 db = Database()
+db.open('./ECS165')
 grades_table = db.create_table('Grades', 5, 0)
 query = Query(grades_table)
 keys = []
@@ -54,3 +55,4 @@ for i in range(0, number_of_records):
     query.delete(906659671 + i)
 delete_time_1 = process_time()
 print("{:.2f}".format(delete_time_1 - delete_time_0))
+db.close()
