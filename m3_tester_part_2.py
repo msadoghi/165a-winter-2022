@@ -58,8 +58,8 @@ for j in range(number_of_operations_per_record):
             original = records[key].copy()
             # update our test directory
             records[key][i] = value
-            transactions[j % number_of_transactions].add_query(query.select, grades_table, key, 0, [1, 1, 1, 1, 1])
-            transactions[j % number_of_transactions].add_query(query.update, grades_table, key, *updated_columns)
+            transactions[key % number_of_transactions].add_query(query.select, grades_table, key, 0, [1, 1, 1, 1, 1])
+            transactions[key % number_of_transactions].add_query(query.update, grades_table, key, *updated_columns)
 print("Update finished")
 
 
