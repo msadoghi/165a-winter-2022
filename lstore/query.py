@@ -45,6 +45,21 @@ class Query:
 
     def select(self, index_value, index_column, query_columns):
         pass
+
+    """
+    # Read a record with specified key
+    # :param index_value: the value of index you want to search
+    # :param index_column: the column number of index you want to search based on
+    # :param query_columns: what columns to return. array of 1 or 0 values.
+    # :param relative_version: the relative version of the record you need to retreive.
+    # Returns a list of Record objects upon success
+    # Returns False if record locked by TPL
+    # Assume that select will never be called on a key that doesn't exist
+    """
+
+    def select_version(self, index_value, index_column, query_columns, relative_version):
+        pass
+
     """
     # Update a record with specified key and columns
     # Returns True if update is succesful
@@ -64,6 +79,19 @@ class Query:
     """
 
     def sum(self, start_range, end_range, aggregate_column_index):
+        pass
+
+    """
+    :param start_range: int         # Start of the key range to aggregate 
+    :param end_range: int           # End of the key range to aggregate 
+    :param aggregate_columns: int  # Index of desired column to aggregate
+    :param relative_version: the relative version of the record you need to retreive.
+    # this function is only called on the primary key.
+    # Returns the summation of the given range upon success
+    # Returns False if no record exists in the given range
+    """
+
+    def sum_version(self, start_range, end_range, aggregate_column_index, relative_version):
         pass
 
     """
