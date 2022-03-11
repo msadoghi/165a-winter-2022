@@ -65,7 +65,7 @@ for key in records:
         query.update(key, *updated_columns)
 
         #check version -1 for record
-        record = query.select(key, 0, [1, 1, 1, 1, 1], -1)[0]
+        record = query.select_version(key, 0, [1, 1, 1, 1, 1], -1)[0]
         error = False
         for j, column in enumerate(record.columns):
             if column != records[key][j]:
@@ -77,7 +77,7 @@ for key in records:
             # print('update on', original, 'and', updated_columns, ':', record)
 
         #check version -2 for record
-        record = query.select(key, 0, [1, 1, 1, 1, 1], -2)[0]
+        record = query.select_version(key, 0, [1, 1, 1, 1, 1], -2)[0]
         error = False
         for j, column in enumerate(record.columns):
             if column != records[key][j]:
@@ -89,7 +89,7 @@ for key in records:
             # print('update on', original, 'and', updated_columns, ':', record)
         
         #check version 0 for record
-        record = query.select(key, 0, [1, 1, 1, 1, 1], 0)[0]
+        record = query.select_version(key, 0, [1, 1, 1, 1, 1], 0)[0]
         error = False
         for j, column in enumerate(record.columns):
             if column != updated_records[key][j]:
