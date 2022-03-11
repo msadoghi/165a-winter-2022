@@ -54,7 +54,7 @@ for j in range(number_of_operations_per_record):
             # updated value
             value = randint(0, 20)
             updated_columns[i] = value
-            updated_records = records[key].copy()
+            updated_records[key] = records[key].copy()
             # update our test directory
             updated_records[key][i] = value
             transactions[key % number_of_transactions].add_query(query.select, grades_table, key, 0, [1, 1, 1, 1, 1])

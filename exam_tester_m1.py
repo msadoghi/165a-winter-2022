@@ -59,7 +59,7 @@ for key in records:
         updated_columns[i] = value
         # copy record to check
         original = records[key].copy()
-        updated_records = records[key].copy()
+        updated_records[key] = records[key].copy()
         # update our test directory
         updated_records[key][i] = value
         query.update(key, *updated_columns)
