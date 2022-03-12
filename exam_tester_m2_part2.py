@@ -29,9 +29,9 @@ updated_records = {}
 keys = sorted(list(records.keys()))
 for _ in range(number_of_updates):
     for key in keys:
+        updated_records[key] = records[key].copy()
         for j in range(2, grades_table.num_columns):
             value = randint(0, 20)
-            updated_records[key] = records[key].copy()
             updated_records[key][j] = value
 keys = sorted(list(records.keys()))
 

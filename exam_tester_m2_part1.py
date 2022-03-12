@@ -50,26 +50,25 @@ print("Select finished")
 for _ in range(number_of_updates):
     for key in keys:
         updated_columns = [None, None, None, None, None]
+        # copy record to check
+        original = records[key].copy()
         for i in range(2, grades_table.num_columns):
             # updated value
             value = randint(0, 20)
             updated_columns[i] = value
-            # copy record to check
-            original = records[key].copy()
             # update our test directory
             records[key][i] = value
-            query.update(key, *updated_columns)
-            record = query.select(key, 0, [1, 1, 1, 1, 1])[0]
-            error = False
-            for j, column in enumerate(record.columns):
-                if column != records[key][j]:
-                    error = True
-            if error:
-                print('update error on', original, 'and', updated_columns, ':', record, ', correct:', records[key])
-            else:
-                pass
-                # print('update on', original, 'and', updated_columns, ':', record)
-            updated_columns[i] = None
+        query.update(key, *updated_columns)
+        record = query.select(key, 0, [1, 1, 1, 1, 1])[0]
+        error = False
+        for j, column in enumerate(record.columns):
+            if column != records[key][j]:
+                error = True
+        if error:
+            print('update error on', original, 'and', updated_columns, ':', record, ', correct:', records[key])
+        else:
+            pass
+            # print('update on', original, 'and', updated_columns, ':', record)
 print("Update finished")
 
 for i in range(0, number_of_aggregates):
