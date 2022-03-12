@@ -53,50 +53,47 @@ for key in records:
 updated_records = {}
 for key in records:
     updated_columns = [None, None, None, None, None]
+    updated_records[key] = records[key].copy()
     for i in range(2, grades_table.num_columns):
         # updated value
         value = randint(0, 20)
         updated_columns[i] = value
-        # copy record to check
-        original = records[key].copy()
-        updated_records[key] = records[key].copy()
         # update our test directory
         updated_records[key][i] = value
-        query.update(key, *updated_columns)
+    query.update(key, *updated_columns)
 
-        #check version -1 for record
-        record = query.select_version(key, 0, [1, 1, 1, 1, 1], -1)[0]
-        error = False
-        for j, column in enumerate(record.columns):
-            if column != records[key][j]:
-                error = True
-        if error:
-            print('update error on', original, 'and', updated_columns, ':', record, ', correct:', records[key])
-        else:
-            pass
-            # print('update on', original, 'and', updated_columns, ':', record)
+    #check version -1 for record
+    record = query.select_version(key, 0, [1, 1, 1, 1, 1], -1)[0]
+    error = False
+    for j, column in enumerate(record.columns):
+        if column != records[key][j]:
+            error = True
+    if error:
+        print('update error on', records[key], 'and', updated_columns, ':', record, ', correct:', records[key])
+    else:
+        pass
+        # print('update on', original, 'and', updated_columns, ':', record)
 
-        #check version -2 for record
-        record = query.select_version(key, 0, [1, 1, 1, 1, 1], -2)[0]
-        error = False
-        for j, column in enumerate(record.columns):
-            if column != records[key][j]:
-                error = True
-        if error:
-            print('update error on', original, 'and', updated_columns, ':', record, ', correct:', records[key])
-        else:
-            pass
-            # print('update on', original, 'and', updated_columns, ':', record)
-        
-        #check version 0 for record
-        record = query.select_version(key, 0, [1, 1, 1, 1, 1], 0)[0]
-        error = False
-        for j, column in enumerate(record.columns):
-            if column != updated_records[key][j]:
-                error = True
-        if error:
-            print('update error on', original, 'and', updated_columns, ':', record, ', correct:', updated_records[key])
-        updated_columns[i] = None
+    #check version -2 for record
+    record = query.select_version(key, 0, [1, 1, 1, 1, 1], -2)[0]
+    error = False
+    for j, column in enumerate(record.columns):
+        if column != records[key][j]:
+            error = True
+    if error:
+        print('update error on', records[key], 'and', updated_columns, ':', record, ', correct:', records[key])
+    else:
+        pass
+        # print('update on', original, 'and', updated_columns, ':', record)
+    
+    #check version 0 for record
+    record = query.select_version(key, 0, [1, 1, 1, 1, 1], 0)[0]
+    error = False
+    for j, column in enumerate(record.columns):
+        if column != updated_records[key][j]:
+            error = True
+    if error:
+        print('update error on', records[key], 'and', updated_columns, ':', record, ', correct:', updated_records[key])
 
 keys = sorted(list(records.keys()))
 # aggregate on every column 
