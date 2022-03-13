@@ -19,7 +19,7 @@ records = {}
 
 number_of_records = 1000
 number_of_transactions = 100
-number_of_operations_per_record = 10
+number_of_operations_per_record = 1
 num_threads = 8
 
 keys = []
