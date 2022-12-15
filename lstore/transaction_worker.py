@@ -12,12 +12,14 @@ class TransactionWorker:
         self.result = 0
         pass
 
+    
     """
     Appends t to transactions
     """
     def add_transaction(self, t):
         self.transactions.append(t)
 
+        
     """
     Runs all transaction as a thread
     """
