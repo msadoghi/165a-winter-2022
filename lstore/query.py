@@ -38,26 +38,26 @@ class Query:
     # Read matching record with specified search key
     # :param search_key: the value you want to search based on
     # :param search_key_index: the column index you want to search based on
-    # :param projected_columns: what columns to return. array of 1 or 0 values.
+    # :param projected_columns_index: what columns to return. array of 1 or 0 values.
     # Returns a list of Record objects upon success
     # Returns False if record locked by TPL
     # Assume that select will never be called on a key that doesn't exist
     """
-    def select(self, search_key, search_key_index, projected_columns):
+    def select(self, search_key, search_key_index, projected_columns_index):
         pass
 
     
     """
-    # Return a record with specified key
-    # :param index_value: the value of index you want to search
-    # :param index_column: the column number of index you want to search based on
-    # :param query_columns: what columns to return. array of 1 or 0 values.
+    # Read matching record with specified search key
+    # :param search_key: the value you want to search based on
+    # :param search_key_index: the column index you want to search based on
+    # :param projected_columns_index: what columns to return. array of 1 or 0 values.
     # :param relative_version: the relative version of the record you need to retreive.
     # Returns a list of Record objects upon success
     # Returns False if record locked by TPL
     # Assume that select will never be called on a key that doesn't exist
     """
-    def select_version(self, index_value, index_column, query_columns, relative_version):
+    def select_version(self, search_key, search_key_index, projected_columns_index, relative_version):
         pass
 
     
