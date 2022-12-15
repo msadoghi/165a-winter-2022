@@ -23,12 +23,14 @@ class Database():
         table = Table(name, num_columns, key_index)
         return table
 
+    
     """
     # Deletes the specified table
     """
     def drop_table(self, name):
         pass
 
+    
     """
     # Returns table with the passed name
     """
