@@ -21,6 +21,7 @@ class Transaction:
         self.queries.append((query, args))
         # use grades_table for aborting
 
+        
     # If you choose to implement this differently this method must still return True if transaction commits or False on abort
     def run(self):
         for query, args in self.queries:
@@ -30,10 +31,12 @@ class Transaction:
                 return self.abort()
         return self.commit()
 
+    
     def abort(self):
         #TODO: do roll-back and any other necessary operations
         return False
 
+    
     def commit(self):
         # TODO: commit to database
         return True
